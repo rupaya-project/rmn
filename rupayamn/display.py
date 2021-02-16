@@ -11,7 +11,7 @@ pastel.add_style('und', options=['underscore'])
 pastel.add_style('warning', 'yellow')
 pastel.add_style('error', 'red')
 
-help_url = 'https://docs.rupaya.io/masternode/rmn/'
+help_url = 'https://docs.rupaya.io/masternode/rupayamn/'
 
 
 def newline(number: int = 1) -> None:
@@ -263,7 +263,7 @@ def warning(msg: str, newline: bool = True) -> str:
 
 
 def warning_ignoring_start_options(name: str) -> None:
-    "Custom warning when rmn is ignoring the start options"
+    "Custom warning when rupayamn is ignoring the start options"
     warning(
         'masternode <hy>{}</hy> is already configured\n'.format(name)
         + '           '
@@ -272,7 +272,7 @@ def warning_ignoring_start_options(name: str) -> None:
 
 
 def warning_remove_masternode(name: str) -> None:
-    "Custom warning when rmn is removing masternode but no confirmation"
+    "Custom warning when rupayamn is removing masternode but no confirmation"
     warning(
         'you are about to remove masternode <hy>{}</hy>\n'.format(name)
         + '           '
@@ -303,16 +303,16 @@ def error_docker_api() -> None:
 
 
 def error_start_not_initialized() -> None:
-    "Custom error when `rmn start` has never been used with `--name` option"
+    "Custom error when `rupayamn start` has never been used with `--name` option"
     error(
-        'rmn doesn\'t manage any masternode yet\n'
+        'rupayamn doesn\'t manage any masternode yet\n'
         '         please use '
-        '<hy>rmn start --name</hy> to get started'
+        '<hy>rupayamn start --name</hy> to get started'
     )
 
 
 def error_start_option_required(option: str) -> None:
-    "Custom error when `rmn start` is used with name but not the other options"
+    "Custom error when `rupayamn start` is used with name but not the other options"
     error(
         '<hy>{}</hy> is required when starting a new masternode'
         .format(option)
@@ -334,9 +334,9 @@ def error_breaking_change() -> None:
         '         '
         'please recreate your node by deleting it\n'
         '         '
-        '<hy>rmn remove --confirm</hy>\n'
+        '<hy>rupayamn remove --confirm</hy>\n'
         '         '
         'and creating it back with the same options as the old one\n'
         '         '
-        '<hy>rmn start --name ... --net ... --pkey ...</hy>'
+        '<hy>rupayamn start --name ... --net ... --pkey ...</hy>'
     )

@@ -14,7 +14,7 @@ install:
 
 script:
   - flake8 .
-  # - coverage run --source rmn -m pytest -v
+  # - coverage run --source rupayamn -m pytest -v
   # - coverage report
   # - coveralls
 

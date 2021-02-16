@@ -3,15 +3,15 @@ import sys
 
 import click
 
-from rmn import display
-from rmn import __version__
-from rmn.configuration import Configuration
+from rupayamn import display
+from rupayamn import __version__
+from rupayamn.configuration import Configuration
 
-logger = logging.getLogger('rmn')
+logger = logging.getLogger('rupayamn')
 docker_url = None
 
 
-@click.group(help=('Rupaya MasterNode (rmn) is a cli tool to help you run a'
+@click.group(help=('Rupaya MasterNode (rupayamn) is a cli tool to help you run a'
                    'Rupaya masternode'))
 @click.option('--debug', is_flag=True, help='Enable debug mode')
 @click.option('--docker', metavar='URL', help='Url to the docker server')

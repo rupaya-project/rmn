@@ -6,10 +6,10 @@ environments = {
                 'bfe088d110fd267a08a48965540f46fd0a99dc88a44f3d18ac48e94a08e4f'
                 'cac3a2378d799f@62.171.162.181:10707,enode://6be3ebc8e1305c60c'
                 '885ac35813179e58500ea6e2b6b2319c631cfde2c9fb7511c11ce65d5b73a'
-                '7113ad397c12035082c8c42ed5d33fb584a4db2bed35ac6ae23@62.171.16'
-                '7.83:10707,enode://6b06a7b114e4bc3cf76e72d8ad7ad2b241a1afacd6'
-                '53e6a5080e128e75ffc821f6fcf90a0b5956f76c9435d1ed3ac2da7efc88e'
-                '7c8dd053663a1d2cb991e5741@161.97.93.239:10707'
+                '7113ad39c12035082c8c42ed5d33fb584a4db2bed35ac6ae23@62.171.167'
+                '.83:10707,enode://6b06a7b114e4bc3cf76e72d8ad7ad2b241a1afacd65'
+                '3e6a5080e128e75ffc821f6fcf90a0b5956f76c9435d1ed3ac2da7efc88e7'
+                'c8dd053663a1d2cb991e5741@161.97.93.239:10707'
             ),
             'NETSTATS_HOST': 'wss://stats.rupx.io',
             'NETSTATS_PORT': '443',

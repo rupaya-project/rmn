@@ -1,4 +1,4 @@
-Rupaya MasterNode (rmn) is a cli tool to help you run a Rupaya masternode
+Rupaya MasterNode (rupayamn) is a cli tool to help you run a Rupaya masternode
 
 ## Running and applying a masternode
 

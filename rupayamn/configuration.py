@@ -5,14 +5,14 @@ from clint import resources
 from slugify import slugify
 import docker
 
-from rmn import display
-from rmn.elements.network import Network
-from rmn.elements.service import Service
-from rmn.elements.volume import Volume
-from rmn.environments import environments
+from rupayamn import display
+from rupayamn.elements.network import Network
+from rupayamn.elements.service import Service
+from rupayamn.elements.volume import Volume
+from rupayamn.environments import environments
 
-logger = logging.getLogger('rmn')
-resources.init('rupaya', 'rmn')
+logger = logging.getLogger('rupayamn')
+resources.init('rupaya', 'rupayamn')
 
 
 class Configuration:
@@ -71,8 +71,8 @@ class Configuration:
         resources.user.write('api', self.api)
 
     def _compose(self) -> None:
-        self.networks['rmn'] = Network(
-            name='{}_rmn'.format(self.name),
+        self.networks['rupayamn'] = Network(
+            name='{}_rupayamn'.format(self.name),
             client=self.client
         )
         self.volumes['chaindata'] = Volume(
@@ -84,7 +84,7 @@ class Configuration:
         elif self.net == 'testnet':
             tag = 'testnet'
         else:
-            tag = 'latest'
+            tag = 'mainnet'
         if self.api == 'True':  # this is dirty, should be refactored
             rupaya_ports = {'10707/udp': 10707, '10707/tcp': 10707,
                             '7050/tcp': 7050, '8050/tcp': 8050}
@@ -92,10 +92,8 @@ class Configuration:
             rupaya_ports = {'10707/udp': 10707, '10707/tcp': 10707}
         self.services['rupaya'] = Service(
             name='{}_rupaya'.format(self.name),
-            image='rupaya/node:{}'.format(
-                'devnet' if tag == 'latest' else tag
-            ),
-            network=self.networks['rmn'].name,
+            image='rupaya/node:{}'.format('latest'),
+            network=self.networks['rupayamn'].name,
             environment={
                 'IDENTITY': '{}'.format(self.name),
                 'PRIVATE_KEY': '{}'.format(self.pkey)

@@ -1,32 +1,32 @@
 environments = {
     'mainnet': {
-        'tomochain': {
+        'rupaya': {
             'BOOTNODES': (
-                'enode://97f0ca95a653e3c44d5df2674e19e9324ea4bf4d47a46b1d8560f'
-                '3ed4ea328f725acec3fcfcb37eb11706cf07da669e9688b091f1543f89b24'
-                '25700a68bc8876@3.212.20.0:30301,enode://b72927f349f3a27b78'
-                '9d0ca615ffe3526f361665b496c80e7cc19dace78bd94785fdadc270054ab'
-                '727dbb172d9e3113694600dd31b2558dd77ad85a869032dea@188.166.207'
-                '.189:30301,enode://c8f2f0643527d4efffb8cb10ef9b6da4310c5ac9f2'
-                'e988a7f85363e81d42f1793f64a9aa127dbaff56b1e8011f90fe9ff57fa02'
-                'a36f73220da5ff81d8b8df351@104.248.98.60:30301'
+                'enode://576b502ff97838abf14433608bcdba5b36a708e465bc576e6c226'
+                'bfe088d110fd267a08a48965540f46fd0a99dc88a44f3d18ac48e94a08e4f'
+                'cac3a2378d799f@62.171.162.181:10707,enode://6be3ebc8e1305c60c'
+                '885ac35813179e58500ea6e2b6b2319c631cfde2c9fb7511c11ce65d5b73a'
+                '7113ad397c12035082c8c42ed5d33fb584a4db2bed35ac6ae23@62.171.16'
+                '7.83:10707,enode://6b06a7b114e4bc3cf76e72d8ad7ad2b241a1afacd6'
+                '53e6a5080e128e75ffc821f6fcf90a0b5956f76c9435d1ed3ac2da7efc88e'
+                '7c8dd053663a1d2cb991e5741@161.97.93.239:10707'
             ),
-            'NETSTATS_HOST': 'wss://stats.tomochain.com',
+            'NETSTATS_HOST': 'wss://stats.rupx.io',
             'NETSTATS_PORT': '443',
-            'NETWORK_ID': '88',
+            'NETWORK_ID': '499',
             'WS_SECRET': (
-                'getty-site-pablo-auger-room-sos-blair-shin-whiz-delhi'
+                'imperial-snowmen-applauded'
             )
         },
     },
     'testnet': {
-        'tomochain': {
+        'rupaya': {
             'BOOTNODES': (
                 'enode://ba966140e161ad416a7bd7c75dc695e0a41232723e2b19cbbf651'
                 '883ef5e8f2528801b17b9d63152814d219a58a4fcc3e3c877486e64057523'
                 'f6714092348efa@195.154.150.210:30301'
             ),
-            'NETSTATS_HOST': 'stats.testnet.tomochain.com',
+            'NETSTATS_HOST': 'stats.testnet.rupx.io',
             'NETSTATS_PORT': '443',
             'NETWORK_ID': '89',
             'WS_SECRET': (
@@ -35,7 +35,7 @@ environments = {
         },
     },
     'devnet': {
-        'tomochain': {
+        'rupaya': {
             'BOOTNODES': (
                 'enode://5bec42d41c9eb291c1d20c9ac92bd9c86a4954189b6592b0833e5'
                 'c28e389b59e3992efed119a2782d9b95ba7aa78e7f71813067cd6734fadff'
@@ -46,7 +46,7 @@ environments = {
                 'c120501672c0d21900d826d6c1c5a07d64ad36509ec5e7306d7a2c3398398'
                 'f34f3e279b91c487c2b3a9537@104.248.99.233:30301'
             ),
-            'NETSTATS_HOST': 'stats.devnet.tomochain.com',
+            'NETSTATS_HOST': 'stats.devnet.rupx.io',
             'NETSTATS_PORT': '443',
             'NETWORK_ID': '90',
             'WS_SECRET': (

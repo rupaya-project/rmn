@@ -5,14 +5,14 @@ from clint import resources
 from slugify import slugify
 import docker
 
-from tmn import display
-from tmn.elements.network import Network
-from tmn.elements.service import Service
-from tmn.elements.volume import Volume
-from tmn.environments import environments
+from rmn import display
+from rmn.elements.network import Network
+from rmn.elements.service import Service
+from rmn.elements.volume import Volume
+from rmn.environments import environments
 
-logger = logging.getLogger('tmn')
-resources.init('tomochain', 'tmn')
+logger = logging.getLogger('rmn')
+resources.init('rupaya', 'rmn')
 
 
 class Configuration:
@@ -71,8 +71,8 @@ class Configuration:
         resources.user.write('api', self.api)
 
     def _compose(self) -> None:
-        self.networks['tmn'] = Network(
-            name='{}_tmn'.format(self.name),
+        self.networks['rmn'] = Network(
+            name='{}_rmn'.format(self.name),
             client=self.client
         )
         self.volumes['chaindata'] = Volume(
@@ -86,26 +86,26 @@ class Configuration:
         else:
             tag = 'latest'
         if self.api == 'True':  # this is dirty, should be refactored
-            tomochain_ports = {'30303/udp': 30303, '30303/tcp': 30303,
-                               '8545/tcp': 8545, '8546/tcp': 8546}
+            rupaya_ports = {'10707/udp': 10707, '10707/tcp': 10707,
+                            '7050/tcp': 7050, '8050/tcp': 8050}
         else:
-            tomochain_ports = {'30303/udp': 30303, '30303/tcp': 30303}
-        self.services['tomochain'] = Service(
-            name='{}_tomochain'.format(self.name),
-            image='tomochain/node:{}'.format(
+            rupaya_ports = {'10707/udp': 10707, '10707/tcp': 10707}
+        self.services['rupaya'] = Service(
+            name='{}_rupaya'.format(self.name),
+            image='rupaya/node:{}'.format(
                 'devnet' if tag == 'latest' else tag
             ),
-            network=self.networks['tmn'].name,
+            network=self.networks['rmn'].name,
             environment={
                 'IDENTITY': '{}'.format(self.name),
                 'PRIVATE_KEY': '{}'.format(self.pkey)
             },
             volumes={
                 self.volumes['chaindata'].name: {
-                    'bind': '/tomochain', 'mode': 'rw'
+                    'bind': '/rupaya', 'mode': 'rw'
                 }
             },
-            ports=tomochain_ports,
+            ports=rupaya_ports,
             client=self.client
         )
         for container, variables in environments[self.net].items():

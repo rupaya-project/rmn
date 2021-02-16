@@ -3,7 +3,7 @@ from typing import Dict, Union
 
 import docker
 
-logger = logging.getLogger('tmn')
+logger = logging.getLogger('rmn')
 
 
 class Service:

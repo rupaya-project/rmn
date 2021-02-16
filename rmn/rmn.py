@@ -3,16 +3,16 @@ import sys
 
 import click
 
-from tmn import display
-from tmn import __version__
-from tmn.configuration import Configuration
+from rmn import display
+from rmn import __version__
+from rmn.configuration import Configuration
 
-logger = logging.getLogger('tmn')
+logger = logging.getLogger('rmn')
 docker_url = None
 
 
-@click.group(help=('Tomo MasterNode (tmn) is a cli tool to help you run a Tomo'
-                   'chain masternode'))
+@click.group(help=('Rupaya MasterNode (rmn) is a cli tool to help you run a'
+                   'Rupaya masternode'))
 @click.option('--debug', is_flag=True, help='Enable debug mode')
 @click.option('--docker', metavar='URL', help='Url to the docker server')
 @click.version_option(version=__version__)
@@ -25,13 +25,13 @@ def main(debug: bool, docker: str) -> None:
     docker_url = docker
 
 
-@click.command(help='Display TomoChain documentation link')
+@click.command(help='Display Rupaya documentation link')
 def docs() -> None:
     "Link to the documentation"
     display.link_docs()
 
 
-@click.command(help='Start your TomoChain masternode')
+@click.command(help='Start your Rupaya masternode')
 @click.option('--name', metavar='NAME', help='Your masternode\'s name')
 @click.option('--net', type=click.Choice(['mainnet', 'testnet', 'devnet']),
               help='The environment your masternode will connect to')
@@ -85,7 +85,7 @@ def start(name: str, net: str, pkey: str, api: bool) -> None:
     display.newline()
 
 
-@click.command(help='Stop your TomoChain masternode')
+@click.command(help='Stop your Rupaya masternode')
 def stop() -> None:
     "Stop the masternode containers"
     configuration = Configuration(docker_url=docker_url)
@@ -102,7 +102,7 @@ def stop() -> None:
     display.newline()
 
 
-@click.command(help='Show the status of your TomoChain masternode')
+@click.command(help='Show the status of your Rupaya masternode')
 def status() -> None:
     "Show the status of the masternode containers"
     configuration = Configuration(docker_url=docker_url)
@@ -137,22 +137,22 @@ def status() -> None:
     display.newline()
 
 
-@click.command(help='Show details about your TomoChain masternode')
+@click.command(help='Show details about your Rupaya masternode')
 def inspect() -> None:
-    "Show details about the tomochain masternode"
+    "Show details about the rupaya masternode"
     configuration = Configuration(docker_url=docker_url)
     if configuration.force_recreate:
         display.error_breaking_change()
         sys.exit('\n')
     display.title_inspect_masternode(configuration.name)
-    identity = configuration.services['tomochain'].execute(
+    identity = configuration.services['rupaya'].execute(
         'echo $IDENTITY'
     ) or 'container not running'
     display.detail_identity(identity)
     display.newline()
-    coinbase = configuration.services['tomochain'].execute(
-        'tomo account list --keystore keystore 2> /dev/null | head -n 1 | cut '
-        '-d"{" -f 2 | cut -d"}" -f 1'
+    coinbase = configuration.services['rupaya'].execute(
+        'rupaya account list --keystore keystore 2> /dev/null | head -n 1 |'
+        'cut -d"{" -f 2 | cut -d"}" -f 1'
     )
     if coinbase:
         coinbase = '0x{}'.format(coinbase)
@@ -164,7 +164,7 @@ def inspect() -> None:
 
 @click.command(help='Update your masternode')
 def update() -> None:
-    "Update the tomochain masternode with the lastest images"
+    "Update the rupaya masternode with the lastest images"
     configuration = Configuration(docker_url=docker_url)
     if configuration.force_recreate:
         display.error_breaking_change()
@@ -206,7 +206,7 @@ def update() -> None:
     display.newline()
 
 
-@click.command(help='Remove your TomoChain masternode')
+@click.command(help='Remove your Rupaya masternode')
 @click.option('--confirm', is_flag=True)
 def remove(confirm: bool) -> None:
     "Remove the masternode (containers, networks volumes)"
